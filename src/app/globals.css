@@ -1,0 +1,145 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+:root {
+  /* Light monochrome: five-step grey palette + a softened (never pure) black ink.
+     Palette — #eeeeee #dddddd #cccccc #bbbbbb #9a9a9a */
+  --background: #dddddd;
+  --foreground: #242424;
+  --card: #eeeeee;
+  --card-foreground: #242424;
+  --popover: #eeeeee;
+  --popover-foreground: #242424;
+  --primary: #242424;
+  --primary-foreground: #eeeeee;
+  --secondary: #cccccc;
+  --secondary-foreground: #242424;
+  --muted: #cccccc;
+  --muted-foreground: #5b5b5b;
+  --accent: #cccccc;
+  --accent-foreground: #242424;
+  --destructive: #5b5b5b;
+  --border: #bbbbbb;
+  --input: #bbbbbb;
+  --ring: #9a9a9a;
+  --radius: 1rem;
+
+  /* Full-bleed rhythm bands: softened black against the grey page */
+  --ink: #242424;
+  --ink-foreground: #eeeeee;
+  --ink-muted: #bbbbbb;
+  --ink-border: oklch(0.93 0 0 / 16%);
+  --ink-card: oklch(0.93 0 0 / 7%);
+
+  /* Sole accent within the monochrome palette — the mid grey, legible on
+     both the light surfaces and the softened-black bands */
+  --highlight: #9a9a9a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-border: var(--ink-border);
+  --color-ink-card: var(--ink-card);
+
+  --color-highlight: var(--highlight);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-heading: var(--font-sans);
+
+  --radius-sm: calc(var(--radius) * 0.5);
+  --radius-md: calc(var(--radius) * 0.7);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.3);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-3xl: calc(var(--radius) * 2);
+  --radius-4xl: calc(var(--radius) * 2.4);
+
+  --animate-marquee: marquee 42s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 46s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-marquee,
+  .animate-marquee-reverse {
+    animation: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::selection {
+  background: var(--color-foreground);
+  color: var(--color-background);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-highlight);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted-foreground);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}

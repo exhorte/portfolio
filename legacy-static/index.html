@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exhorte Mboumba — Junior Full-Stack Developer</title>
+  <meta name="description" content="Portfolio d'Exhorte Mboumba, Junior Full-Stack Developer spécialisé en applications web sécurisées, dashboards financiers et APIs REST. Stack : React, Next.js, Spring Boot, Django." />
+  <meta name="keywords" content="Exhorte Mboumba, Full-Stack Developer, React, Next.js, Spring Boot, Django, Portfolio, Dakar, Sénégal" />
+  <meta property="og:title" content="Exhorte Mboumba — Junior Full-Stack Developer" />
+  <meta property="og:description" content="Applications web modernes, sécurisées et performantes. React · Next.js · Spring Boot · Django" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
+
+  <!-- Devicons for tech icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========== LOADER ========== -->
+  <div id="loader" class="loader" aria-hidden="true">
+    <div class="loader-content">
+      <div class="loader-logo">EM</div>
+      <div class="loader-bar"><div class="loader-progress"></div></div>
+      <span class="loader-text">Chargement...</span>
+    </div>
+  </div>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Navigation principale">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo" aria-label="Accueil">
+        <span class="logo-bracket">&lt;</span>EM<span class="logo-bracket">/&gt;</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="#about" class="nav-link">À propos</a></li>
+        <li><a href="#stack" class="nav-link">Stack</a></li>
+        <li><a href="#projects" class="nav-link">Projets</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#skills" class="nav-link">Compétences</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Dark / Light Mode Toggle -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Basculer le mode sombre/clair" title="Toggle Dark/Light Mode">
+          <span class="toggle-icon sun"><i class="fas fa-sun"></i></span>
+          <span class="toggle-icon moon"><i class="fas fa-moon"></i></span>
+        </button>
+
+        <!-- CV Download -->
+        <a href="https://www.genspark.ai/api/files/s/lCEYNeJR" target="_blank" class="btn btn-outline btn-sm" aria-label="Télécharger le CV">
+          <i class="fas fa-download"></i> CV
+        </a>
+
+        <!-- Hamburger -->
+        <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section class="hero" id="hero" aria-label="Présentation">
+    <!-- Animated background -->
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-grid"></div>
+      <div class="hero-orb orb-1"></div>
+      <div class="hero-orb orb-2"></div>
+      <div class="hero-orb orb-3"></div>
+      <div class="particles" id="particles"></div>
+    </div>
+
+    <div class="hero-container">
+      <div class="hero-content" data-animate="fade-up">
+        <!-- Badge -->
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>Disponible pour missions &amp; alternance</span>
+        </div>
+
+        <!-- Greeting -->
+        <p class="hero-greeting">Bonjour, je suis</p>
+
+        <!-- Name -->
+        <h1 class="hero-name">
+          <span class="name-first">Exhorte</span>
+          <span class="name-last gradient-text">Mboumba</span>
+        </h1>
+
+        <!-- Animated title -->
+        <div class="hero-title-wrapper">
+          <span class="hero-title-static">Junior </span>
+          <span class="hero-title-dynamic" id="typingText"></span>
+          <span class="typing-cursor">|</span>
+        </div>
+
+        <!-- Tagline -->
+        <p class="hero-tagline">
+          Je conçois des applications web <strong>modernes</strong>, <strong>sécurisées</strong> et <strong>performantes</strong>.
+        </p>
+
+        <!-- Location -->
+        <div class="hero-location">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Dakar, Sénégal</span>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">
+            <i class="fas fa-rocket"></i> Voir mes projets
+          </a>
+          <a href="https://www.genspark.ai/api/files/s/lCEYNeJR" target="_blank" class="btn btn-outline">
+            <i class="fas fa-download"></i> Télécharger CV
+          </a>
+        </div>
+
+        <!-- Social links -->
+        <div class="hero-social">
+          <a href="mailto:exhorte.mboumba@email.com" class="social-link" aria-label="Email" title="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="https://github.com/" target="_blank" rel="noopener" class="social-link" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Visual -->
+      <div class="hero-visual" data-animate="fade-left">
+        <div class="hero-avatar-wrapper">
+          <div class="avatar-ring ring-1"></div>
+          <div class="avatar-ring ring-2"></div>
+          <div class="avatar-ring ring-3"></div>
+          <div class="hero-avatar">
+            <div class="avatar-placeholder">
+              <span>EM</span>
+            </div>
+          </div>
+          <!-- Floating cards -->
+          <div class="float-card card-react" aria-hidden="true">
+            <i class="devicon-react-original colored"></i>
+            <span>React.js</span>
+          </div>
+          <div class="float-card card-spring" aria-hidden="true">
+            <i class="devicon-spring-plain colored"></i>
+            <span>Spring Boot</span>
+          </div>
+          <div class="float-card card-next" aria-hidden="true">
+            <i class="devicon-nextjs-original"></i>
+            <span>Next.js 14</span>
+          </div>
+          <div class="float-card card-docker" aria-hidden="true">
+            <i class="devicon-docker-plain colored"></i>
+            <span>Docker</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-mouse">
+        <div class="scroll-wheel"></div>
+      </div>
+      <span>Défiler</span>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT SECTION ========== -->
+  <section class="section about-section" id="about" aria-label="À propos">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="section-tag">Mon profil</span>
+        <h2 class="section-title">À <span class="gradient-text">propos</span></h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="about-grid">
+        <!-- Text side -->
+        <div class="about-text" data-animate="fade-right">
+          <p class="about-intro">
+            Étudiant en <strong>L3 Génie Logiciel</strong>, je suis un développeur Junior Full-Stack passionné
+            par la conception d'applications web robustes et sécurisées.
+          </p>
+          <p class="about-body">
+            Ma spécialisation porte sur les <strong>dashboards financiers</strong> et les
+            <strong>systèmes bancaires</strong> avec des technologies comme <em>Spring Boot</em>,
+            <em>Django</em> et <em>Next.js</em>. Je maîtrise la gestion de bases de données
+            relationnelles (MySQL, PostgreSQL) et j'intègre les bonnes pratiques DevOps au
+            quotidien (Docker, Git, Ansible).
+          </p>
+          <p class="about-body">
+            Rigoureux, autonome et orienté résultats, je m'engage à livrer des
+            solutions performantes, accessibles et bien documentées — qu'il s'agisse
+            d'une MVP en quelques jours ou d'un système complexe à long terme.
+          </p>
+
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <div class="highlight-icon"><i class="fas fa-shield-alt"></i></div>
+              <div>
+                <strong>Sécurité & Auth</strong>
+                <span>JWT, OAuth, Spring Security</span>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon"><i class="fas fa-chart-line"></i></div>
+              <div>
+                <strong>Dashboards Financiers</strong>
+                <span>Temps réel, multi-comptes</span>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon"><i class="fas fa-code"></i></div>
+              <div>
+                <strong>Clean Code</strong>
+                <span>Performance & maintenabilité</span>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon"><i class="fas fa-mobile-alt"></i></div>
+              <div>
+                <strong>Mobile-First</strong>
+                <span>Responsive & UX moderne</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats side -->
+        <div class="about-stats" data-animate="fade-left">
+          <div class="stats-card glass-card">
+            <div class="stat-item">
+              <span class="stat-number" data-count="5">0</span><span class="stat-suffix">+</span>
+              <span class="stat-label">Projets réalisés</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number" data-count="10">0</span><span class="stat-suffix">+</span>
+              <span class="stat-label">Technologies maîtrisées</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number" data-count="3">0</span><span class="stat-suffix">+</span>
+              <span class="stat-label">Années d'expérience</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number" data-count="100">0</span><span class="stat-suffix">%</span>
+              <span class="stat-label">Satisfaction clients</span>
+            </div>
+          </div>
+
+          <div class="education-card glass-card" data-animate="fade-up">
+            <h3><i class="fas fa-graduation-cap"></i> Formation</h3>
+            <div class="edu-item">
+              <div class="edu-dot"></div>
+              <div>
+                <strong>L3 Génie Logiciel</strong>
+                <span>En cours · 2024 - 2025</span>
+                <span class="edu-school">Dakar, Sénégal</span>
+              </div>
+            </div>
+            <div class="edu-item">
+              <div class="edu-dot edu-dot-past"></div>
+              <div>
+                <strong>Développement Web Full-Stack</strong>
+                <span>Certification · 2023</span>
+                <span class="edu-school">Formation intensive</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== STACK SECTION (Marquee) ========== -->
+  <section class="section stack-section" id="stack" aria-label="Stack et technologies">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="section-tag">Mes outils</span>
+        <h2 class="section-title">Stack & <span class="gradient-text">Technologies</span></h2>
+        <div class="section-line"></div>
+      </div>
+    </div>
+
+    <!-- Marquee Track 1 -->
+    <div class="marquee-wrapper" aria-label="Technologies carousel">
+      <div class="marquee-track" id="marqueeTrack1">
+        <div class="marquee-inner">
+          <!-- Items duplicated for infinite loop -->
+          <div class="tech-badge"><i class="devicon-react-original colored"></i><span>React.js</span></div>
+          <div class="tech-badge"><i class="devicon-nextjs-original"></i><span>Next.js 14</span></div>
+          <div class="tech-badge"><i class="devicon-spring-plain colored"></i><span>Spring Boot</span></div>
+          <div class="tech-badge"><i class="devicon-django-plain colored"></i><span>Django</span></div>
+          <div class="tech-badge"><i class="devicon-laravel-plain colored"></i><span>Laravel</span></div>
+          <div class="tech-badge"><i class="devicon-mysql-plain colored"></i><span>MySQL</span></div>
+          <div class="tech-badge"><i class="devicon-postgresql-plain colored"></i><span>PostgreSQL</span></div>
+          <div class="tech-badge"><i class="devicon-docker-plain colored"></i><span>Docker</span></div>
+          <div class="tech-badge"><i class="devicon-git-plain colored"></i><span>Git</span></div>
+          <div class="tech-badge"><i class="devicon-java-plain colored"></i><span>Java</span></div>
+          <div class="tech-badge"><i class="devicon-python-plain colored"></i><span>Python</span></div>
+          <div class="tech-badge"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
+          <div class="tech-badge"><i class="devicon-csharp-plain colored"></i><span>C#</span></div>
+          <div class="tech-badge"><i class="devicon-typescript-plain colored"></i><span>TypeScript</span></div>
+          <div class="tech-badge"><i class="devicon-bootstrap-plain colored"></i><span>Bootstrap</span></div>
+          <div class="tech-badge"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
+          <div class="tech-badge"><i class="devicon-css3-plain colored"></i><span>CSS3</span></div>
+          <div class="tech-badge"><i class="devicon-ansible-plain colored"></i><span>Ansible</span></div>
+          <!-- Duplicate for seamless loop -->
+          <div class="tech-badge"><i class="devicon-react-original colored"></i><span>React.js</span></div>
+          <div class="tech-badge"><i class="devicon-nextjs-original"></i><span>Next.js 14</span></div>
+          <div class="tech-badge"><i class="devicon-spring-plain colored"></i><span>Spring Boot</span></div>
+          <div class="tech-badge"><i class="devicon-django-plain colored"></i><span>Django</span></div>
+          <div class="tech-badge"><i class="devicon-laravel-plain colored"></i><span>Laravel</span></div>
+          <div class="tech-badge"><i class="devicon-mysql-plain colored"></i><span>MySQL</span></div>
+          <div class="tech-badge"><i class="devicon-postgresql-plain colored"></i><span>PostgreSQL</span></div>
+          <div class="tech-badge"><i class="devicon-docker-plain colored"></i><span>Docker</span></div>
+          <div class="tech-badge"><i class="devicon-git-plain colored"></i><span>Git</span></div>
+          <div class="tech-badge"><i class="devicon-java-plain colored"></i><span>Java</span></div>
+          <div class="tech-badge"><i class="devicon-python-plain colored"></i><span>Python</span></div>
+          <div class="tech-badge"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
+          <div class="tech-badge"><i class="devicon-csharp-plain colored"></i><span>C#</span></div>
+          <div class="tech-badge"><i class="devicon-typescript-plain colored"></i><span>TypeScript</span></div>
+          <div class="tech-badge"><i class="devicon-bootstrap-plain colored"></i><span>Bootstrap</span></div>
+          <div class="tech-badge"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
+          <div class="tech-badge"><i class="devicon-css3-plain colored"></i><span>CSS3</span></div>
+          <div class="tech-badge"><i class="devicon-ansible-plain colored"></i><span>Ansible</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Marquee Track 2 (reverse) -->
+    <div class="marquee-wrapper marquee-reverse" aria-hidden="true">
+      <div class="marquee-track" id="marqueeTrack2">
+        <div class="marquee-inner">
+          <div class="tech-badge outline"><i class="devicon-react-original colored"></i><span>React Native</span></div>
+          <div class="tech-badge outline"><i class="devicon-hibernate-plain colored"></i><span>Hibernate</span></div>
+          <div class="tech-badge outline"><i class="devicon-linux-plain colored"></i><span>Linux</span></div>
+          <div class="tech-badge outline"><i class="fas fa-server" style="color:#ef4444"></i><span>APIs REST</span></div>
+          <div class="tech-badge outline"><i class="devicon-vscode-plain colored"></i><span>VS Code</span></div>
+          <div class="tech-badge outline"><i class="devicon-intellij-plain colored"></i><span>IntelliJ IDEA</span></div>
+          <div class="tech-badge outline"><i class="devicon-postman-plain colored"></i><span>Postman</span></div>
+          <div class="tech-badge outline"><i class="devicon-github-original"></i><span>GitHub</span></div>
+          <div class="tech-badge outline"><i class="fas fa-database" style="color:#ef4444"></i><span>Nexus</span></div>
+          <div class="tech-badge outline"><i class="devicon-tailwindcss-plain colored"></i><span>Tailwind CSS</span></div>
+          <div class="tech-badge outline"><i class="devicon-react-original colored"></i><span>React Native</span></div>
+          <div class="tech-badge outline"><i class="devicon-hibernate-plain colored"></i><span>Hibernate</span></div>
+          <div class="tech-badge outline"><i class="devicon-linux-plain colored"></i><span>Linux</span></div>
+          <div class="tech-badge outline"><i class="fas fa-server" style="color:#ef4444"></i><span>APIs REST</span></div>
+          <div class="tech-badge outline"><i class="devicon-vscode-plain colored"></i><span>VS Code</span></div>
+          <div class="tech-badge outline"><i class="devicon-intellij-plain colored"></i><span>IntelliJ IDEA</span></div>
+          <div class="tech-badge outline"><i class="devicon-postman-plain colored"></i><span>Postman</span></div>
+          <div class="tech-badge outline"><i class="devicon-github-original"></i><span>GitHub</span></div>
+          <div class="tech-badge outline"><i class="fas fa-database" style="color:#ef4444"></i><span>Nexus</span></div>
+          <div class="tech-badge outline"><i class="devicon-tailwindcss-plain colored"></i><span>Tailwind CSS</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROJECTS SECTION ========== -->
+  <section class="section projects-section" id="projects" aria-label="Projets">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="section-tag">Mon travail</span>
+        <h2 class="section-title">Mes <span class="gradient-text">Projets</span></h2>
+        <div class="section-line"></div>
+        <p class="section-subtitle">Des solutions réelles, du code propre, des interfaces modernes.</p>
+      </div>
+
+      <div class="projects-filter" data-animate="fade-up">
+        <button class="filter-btn active" data-filter="all">Tous</button>
+        <button class="filter-btn" data-filter="frontend">Frontend</button>
+        <button class="filter-btn" data-filter="fullstack">Full-Stack</button>
+        <button class="filter-btn" data-filter="backend">Backend</button>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- Project 1: Banking App -->
+        <article class="project-card glass-card" data-animate="fade-up" data-category="fullstack" data-delay="0">
+          <div class="project-image">
+            <div class="project-mockup banking-mockup">
+              <div class="mockup-header">
+                <div class="mockup-dots"><span></span><span></span><span></span></div>
+                <div class="mockup-url">bank-dashboard.app</div>
+              </div>
+              <div class="mockup-body">
+                <div class="mockup-sidebar">
+                  <div class="sidebar-item active"></div>
+                  <div class="sidebar-item"></div>
+                  <div class="sidebar-item"></div>
+                  <div class="sidebar-item"></div>
+                </div>
+                <div class="mockup-content">
+                  <div class="mockup-balance">
+                    <span class="balance-label">Solde total</span>
+                    <span class="balance-amount">24 580 €</span>
+                  </div>
+                  <div class="mockup-chart">
+                    <div class="chart-bar" style="height:60%"></div>
+                    <div class="chart-bar" style="height:80%"></div>
+                    <div class="chart-bar" style="height:45%"></div>
+                    <div class="chart-bar" style="height:90%"></div>
+                    <div class="chart-bar" style="height:65%"></div>
+                    <div class="chart-bar" style="height:75%"></div>
+                  </div>
+                  <div class="mockup-transactions">
+                    <div class="tx-item"><div class="tx-icon bank"></div><span>Virement reçu</span><span class="tx-amount pos">+1 200€</span></div>
+                    <div class="tx-item"><div class="tx-icon shop"></div><span>Shopping</span><span class="tx-amount neg">-85€</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project-overlay">
+              <span class="featured-badge"><i class="fas fa-star"></i> Featured</span>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-tags">
+              <span class="tag">Next.js 14</span>
+              <span class="tag">React.js</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">MySQL</span>
+            </div>
+            <h3 class="project-title">Application Bancaire — Dashboard</h3>
+            <p class="project-desc">
+              Tableau de bord financier complet avec connexion multi-comptes,
+              affichage temps réel des transactions, suivi des dépenses, gestion des rôles
+              (admin/user) et interface responsive moderne.
+            </p>
+            <ul class="project-features">
+              <li><i class="fas fa-check"></i> Authentification sécurisée multi-comptes</li>
+              <li><i class="fas fa-check"></i> Visualisation des transactions en temps réel</li>
+              <li><i class="fas fa-check"></i> Gestion des rôles Admin / User</li>
+              <li><i class="fas fa-check"></i> Interface responsive & dark mode</li>
+            </ul>
+            <div class="project-links">
+              <a href="#" class="btn btn-primary btn-sm" aria-label="Voir le code GitHub">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+              <a href="#" class="btn btn-outline btn-sm" aria-label="Voir la démo live">
+                <i class="fas fa-external-link-alt"></i> Demo
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2: E-Commerce -->
+        <article class="project-card glass-card" data-animate="fade-up" data-category="fullstack" data-delay="100">
+          <div class="project-image">
+            <div class="project-mockup ecommerce-mockup">
+              <div class="mockup-header">
+                <div class="mockup-dots"><span></span><span></span><span></span></div>
+                <div class="mockup-url">ecommerce-platform.app</div>
+              </div>
+              <div class="mockup-body ecom-body">
+                <div class="ecom-nav">
+                  <div class="ecom-nav-item"></div>
+                  <div class="ecom-nav-item"></div>
+                  <div class="ecom-cart"><i class="fas fa-shopping-cart"></i><span>3</span></div>
+                </div>
+                <div class="ecom-products">
+                  <div class="ecom-product">
+                    <div class="product-img"></div>
+                    <div class="product-info">
+                      <div class="product-name"></div>
+                      <div class="product-price">89,99 €</div>
+                    </div>
+                  </div>
+                  <div class="ecom-product">
+                    <div class="product-img" style="background:#2563eb22"></div>
+                    <div class="product-info">
+                      <div class="product-name"></div>
+                      <div class="product-price">124,00 €</div>
+                    </div>
+                  </div>
+                  <div class="ecom-product">
+                    <div class="product-img" style="background:#d97706 22"></div>
+                    <div class="product-info">
+                      <div class="product-name"></div>
+                      <div class="product-price">45,50 €</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-tags">
+              <span class="tag">Spring Boot</span>
+              <span class="tag">React.js</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">JWT</span>
+            </div>
+            <h3 class="project-title">Plateforme E-Commerce Full-Stack</h3>
+            <p class="project-desc">
+              Application e-commerce complète avec catalogue produits,
+              gestion du panier, paiement sécurisé, dashboard admin et
+              API REST robuste en Spring Boot.
+            </p>
+            <ul class="project-features">
+              <li><i class="fas fa-check"></i> API REST sécurisée avec Spring Boot</li>
+              <li><i class="fas fa-check"></i> Authentification JWT</li>
+              <li><i class="fas fa-check"></i> Gestion catalogue & commandes</li>
+              <li><i class="fas fa-check"></i> Dashboard administrateur</li>
+            </ul>
+            <div class="project-links">
+              <a href="#" class="btn btn-primary btn-sm">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+              <a href="#" class="btn btn-outline btn-sm">
+                <i class="fas fa-external-link-alt"></i> Demo
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3: Reservation App -->
+        <article class="project-card glass-card" data-animate="fade-up" data-category="fullstack" data-delay="200">
+          <div class="project-image">
+            <div class="project-mockup reservation-mockup">
+              <div class="mockup-header">
+                <div class="mockup-dots"><span></span><span></span><span></span></div>
+                <div class="mockup-url">reservation-app.com</div>
+              </div>
+              <div class="mockup-body res-body">
+                <div class="res-calendar">
+                  <div class="cal-header">
+                    <span>Février 2025</span>
+                    <div class="cal-nav"><i class="fas fa-chevron-left"></i><i class="fas fa-chevron-right"></i></div>
+                  </div>
+                  <div class="cal-grid">
+                    <div class="cal-day">L</div><div class="cal-day">M</div><div class="cal-day">M</div><div class="cal-day">J</div><div class="cal-day">V</div><div class="cal-day">S</div><div class="cal-day">D</div>
+                    <div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell active">7</div><div class="cal-cell">8</div><div class="cal-cell">9</div>
+                    <div class="cal-cell selected">10</div><div class="cal-cell">11</div><div class="cal-cell">12</div><div class="cal-cell">13</div><div class="cal-cell">14</div><div class="cal-cell">15</div><div class="cal-cell">16</div>
+                  </div>
+                </div>
+                <div class="res-slots">
+                  <div class="slot available">09:00</div>
+                  <div class="slot booked">11:00</div>
+                  <div class="slot available">14:00</div>
+                  <div class="slot available">16:00</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-tags">
+              <span class="tag">Django</span>
+              <span class="tag">React.js</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">Bootstrap</span>
+            </div>
+            <h3 class="project-title">Application de Réservation</h3>
+            <p class="project-desc">
+              Système de réservation en ligne avec calendrier interactif,
+              gestion des créneaux, notifications automatiques et
+              tableau de bord de suivi temps réel.
+            </p>
+            <ul class="project-features">
+              <li><i class="fas fa-check"></i> Calendrier interactif dynamique</li>
+              <li><i class="fas fa-check"></i> Gestion des créneaux et disponibilités</li>
+              <li><i class="fas fa-check"></i> Notifications automatiques</li>
+              <li><i class="fas fa-check"></i> API Django REST Framework</li>
+            </ul>
+            <div class="project-links">
+              <a href="#" class="btn btn-primary btn-sm">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+              <a href="#" class="btn btn-outline btn-sm">
+                <i class="fas fa-external-link-alt"></i> Demo
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SERVICES SECTION ========== -->
+  <section class="section services-section" id="services" aria-label="Services">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="section-tag">Ce que je fais</span>
+        <h2 class="section-title">Mes <span class="gradient-text">Services</span></h2>
+        <div class="section-line"></div>
+        <p class="section-subtitle">Des solutions adaptées à vos besoins, de la conception à la mise en production.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card glass-card" data-animate="fade-up" data-delay="0">
+          <div class="service-icon">
+            <i class="fas fa-paint-brush"></i>
+          </div>
+          <h3>Développement Frontend</h3>
+          <p>Interfaces utilisateur modernes et responsives avec React.js, Next.js 14 et Tailwind CSS. Animations fluides, UX optimisée et performance maximale.</p>
+          <ul class="service-list">
+            <li>React.js / Next.js 14</li>
+            <li>TypeScript + Tailwind CSS</li>
+            <li>Responsive & Mobile-first</li>
+          </ul>
+          <div class="service-hover-effect"></div>
+        </div>
+
+        <div class="service-card glass-card" data-animate="fade-up" data-delay="100">
+          <div class="service-icon">
+            <i class="fas fa-layer-group"></i>
+          </div>
+          <h3>Développement Full-Stack</h3>
+          <p>Applications web complètes du frontend au backend, avec architecture robuste, gestion de bases de données et déploiement Docker.</p>
+          <ul class="service-list">
+            <li>Spring Boot + React</li>
+            <li>Django + PostgreSQL</li>
+            <li>Docker & CI/CD</li>
+          </ul>
+          <div class="service-hover-effect"></div>
+        </div>
+
+        <div class="service-card glass-card" data-animate="fade-up" data-delay="200">
+          <div class="service-icon">
+            <i class="fas fa-lock"></i>
+          </div>
+          <h3>APIs Sécurisées</h3>
+          <p>Conception et développement d'APIs REST robustes avec authentification JWT, gestion des rôles, documentation Swagger et tests unitaires.</p>
+          <ul class="service-list">
+            <li>REST API (Spring Boot / Django)</li>
+            <li>JWT & Spring Security</li>
+            <li>Documentation Swagger</li>
+          </ul>
+          <div class="service-hover-effect"></div>
+        </div>
+
+        <div class="service-card glass-card" data-animate="fade-up" data-delay="300">
+          <div class="service-icon">
+            <i class="fas fa-chart-bar"></i>
+          </div>
+          <h3>Dashboards & Outils Métiers</h3>
+          <p>Tableaux de bord financiers et outils métiers sur mesure avec visualisation de données en temps réel, suivi des KPI et interface intuitive.</p>
+          <ul class="service-list">
+            <li>Dashboard financier temps réel</li>
+            <li>Visualisation de données</li>
+            <li>Gestion multi-rôles</li>
+          </ul>
+          <div class="service-hover-effect"></div>
+        </div>
+
+        <div class="service-card glass-card" data-animate="fade-up" data-delay="400">
+          <div class="service-icon">
+            <i class="fas fa-tools"></i>
+          </div>
+          <h3>Maintenance & Optimisation</h3>
+          <p>Audit de code, refactoring, optimisation des performances, mise à jour des dépendances et amélioration de la qualité du code existant.</p>
+          <ul class="service-list">
+            <li>Audit & refactoring de code</li>
+            <li>Optimisation Lighthouse</li>
+            <li>Migration & mise à jour</li>
+          </ul>
+          <div class="service-hover-effect"></div>
+        </div>
+
+        <div class="service-card glass-card service-cta-card" data-animate="fade-up" data-delay="500">
+          <div class="service-cta-content">
+            <div class="service-icon">
+              <i class="fas fa-handshake"></i>
+            </div>
+            <h3>Un projet en tête ?</h3>
+            <p>Discutons de vos besoins et trouvons la meilleure solution technique ensemble.</p>
+            <a href="#contact" class="btn btn-primary">
+              <i class="fas fa-paper-plane"></i> Me contacter
+            </a>
+          </div>
+          <div class="service-hover-effect"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SKILLS SECTION ========== -->
+  <section class="section skills-section" id="skills" aria-label="Compétences">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="section-tag">Expertise</span>
+        <h2 class="section-title">Compétences & <span class="gradient-text">Savoir-faire</span></h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="skills-grid">
+        <!-- Technical Skills -->
+        <div class="skills-col" data-animate="fade-right">
+          <h3 class="skills-col-title"><i class="fas fa-code"></i> Compétences Techniques</h3>
+
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name"><i class="devicon-react-original colored"></i> React / Next.js</span>
+              <span class="skill-percent">88%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name"><i class="devicon-spring-plain colored"></i> Spring Boot</span>
+              <span class="skill-percent">82%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-width="82"></div></div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name"><i class="devicon-django-plain colored"></i> Django / Python</span>
+              <span class="skill-percent">80%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name"><i class="devicon-laravel-plain colored"></i> Laravel / PHP</span>
+              <span class="skill-percent">75%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name"><i class="devicon-postgresql-plain colored"></i> Bases de données</span>
+              <span class="skill-percent">85%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name"><i class="devicon-docker-plain colored"></i> Docker / DevOps</span>
+              <span class="skill-percent">72%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-width="72"></div></div>
+          </div>
+        </div>
+
+        <!-- Soft skills + Methodology -->
+        <div class="skills-col" data-animate="fade-left">
+          <h3 class="skills-col-title"><i class="fas fa-brain"></i> Soft Skills</h3>
+          <div class="soft-skills-grid">
+            <div class="soft-skill-card">
+              <i class="fas fa-sync-alt"></i>
+              <span>Adaptabilité</span>
+            </div>
+            <div class="soft-skill-card">
+              <i class="fas fa-users"></i>
+              <span>Travail en équipe</span>
+            </div>
+            <div class="soft-skill-card">
+              <i class="fas fa-lightbulb"></i>
+              <span>Résolution de problèmes</span>
+            </div>
+            <div class="soft-skill-card">
+              <i class="fas fa-clock"></i>
+              <span>Gestion du temps</span>
+            </div>
+            <div class="soft-skill-card">
+              <i class="fas fa-comments"></i>
+              <span>Communication</span>
+            </div>
+            <div class="soft-skill-card">
+              <i class="fas fa-graduation-cap"></i>
+              <span>Apprentissage continu</span>
+            </div>
+          </div>
+
+          <h3 class="skills-col-title mt" style="margin-top:2rem"><i class="fas fa-cogs"></i> Méthodologie</h3>
+          <div class="methodology-list">
+            <div class="method-item">
+              <div class="method-icon"><i class="fas fa-check-circle"></i></div>
+              <div>
+                <strong>Clean Code</strong>
+                <p>Lisibilité, réutilisabilité, commentaires pertinents</p>
+              </div>
+            </div>
+            <div class="method-item">
+              <div class="method-icon"><i class="fas fa-shield-alt"></i></div>
+              <div>
+                <strong>Security-First</strong>
+                <p>OWASP, JWT, validation des entrées, HTTPS</p>
+              </div>
+            </div>
+            <div class="method-item">
+              <div class="method-icon"><i class="fas fa-tachometer-alt"></i></div>
+              <div>
+                <strong>Performance</strong>
+                <p>Lazy loading, cache, optimisation requêtes DB</p>
+              </div>
+            </div>
+            <div class="method-item">
+              <div class="method-icon"><i class="fas fa-mobile-alt"></i></div>
+              <div>
+                <strong>Mobile-First</strong>
+                <p>Responsive design, accessibilité WCAG</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT SECTION ========== -->
+  <section class="section contact-section" id="contact" aria-label="Contact">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="section-tag">Travaillons ensemble</span>
+        <h2 class="section-title">Me <span class="gradient-text">Contacter</span></h2>
+        <div class="section-line"></div>
+        <p class="section-subtitle contact-subtitle">
+          "Travaillons ensemble sur votre prochain projet."
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Contact Info -->
+        <div class="contact-info" data-animate="fade-right">
+          <div class="contact-card glass-card">
+            <h3>Disponible pour</h3>
+            <div class="availability-list">
+              <div class="avail-item">
+                <i class="fas fa-briefcase"></i>
+                <span>Missions Freelance</span>
+              </div>
+              <div class="avail-item">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Alternance / Stage</span>
+              </div>
+              <div class="avail-item">
+                <i class="fas fa-users"></i>
+                <span>CDI / CDD</span>
+              </div>
+              <div class="avail-item">
+                <i class="fas fa-handshake"></i>
+                <span>Collaboration Technique</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-links glass-card">
+            <h3>Me retrouver sur</h3>
+            <a href="mailto:exhorte.mboumba@email.com" class="contact-social-link">
+              <div class="cs-icon"><i class="fas fa-envelope"></i></div>
+              <div>
+                <strong>Email</strong>
+                <span>exhorte.mboumba@email.com</span>
+              </div>
+              <i class="fas fa-arrow-right cs-arrow"></i>
+            </a>
+            <a href="https://github.com/" target="_blank" rel="noopener" class="contact-social-link">
+              <div class="cs-icon github"><i class="fab fa-github"></i></div>
+              <div>
+                <strong>GitHub</strong>
+                <span>github.com/exhorte-mboumba</span>
+              </div>
+              <i class="fas fa-arrow-right cs-arrow"></i>
+            </a>
+            <a href="https://linkedin.com/" target="_blank" rel="noopener" class="contact-social-link">
+              <div class="cs-icon linkedin"><i class="fab fa-linkedin-in"></i></div>
+              <div>
+                <strong>LinkedIn</strong>
+                <span>linkedin.com/in/exhorte-mboumba</span>
+              </div>
+              <i class="fas fa-arrow-right cs-arrow"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-wrapper" data-animate="fade-left">
+          <form class="contact-form glass-card" id="contactForm" novalidate>
+            <h3>Envoyez-moi un message</h3>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contactName">Nom complet *</label>
+                <div class="input-wrapper">
+                  <i class="fas fa-user"></i>
+                  <input type="text" id="contactName" name="name" placeholder="John Doe" required autocomplete="name" />
+                </div>
+                <span class="form-error" id="nameError"></span>
+              </div>
+              <div class="form-group">
+                <label for="contactEmail">Email *</label>
+                <div class="input-wrapper">
+                  <i class="fas fa-envelope"></i>
+                  <input type="email" id="contactEmail" name="email" placeholder="john@exemple.com" required autocomplete="email" />
+                </div>
+                <span class="form-error" id="emailError"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contactSubject">Sujet *</label>
+              <div class="input-wrapper">
+                <i class="fas fa-tag"></i>
+                <input type="text" id="contactSubject" name="subject" placeholder="Proposition de mission freelance" required />
+              </div>
+              <span class="form-error" id="subjectError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="contactMessage">Message *</label>
+              <div class="textarea-wrapper">
+                <textarea id="contactMessage" name="message" rows="5" placeholder="Décrivez votre projet, vos besoins, votre budget..." required></textarea>
+              </div>
+              <span class="form-error" id="messageError"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+              <span class="btn-text"><i class="fas fa-paper-plane"></i> Envoyer le message</span>
+              <span class="btn-loading" hidden><i class="fas fa-spinner fa-spin"></i> Envoi en cours...</span>
+            </button>
+
+            <div class="form-success" id="formSuccess" hidden>
+              <i class="fas fa-check-circle"></i>
+              <span>Message envoyé ! Je vous répondrai dans les plus brefs délais.</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="nav-logo">
+            <span class="logo-bracket">&lt;</span>EM<span class="logo-bracket">/&gt;</span>
+          </span>
+          <p>Junior Full-Stack Developer · Dakar, Sénégal</p>
+          <p class="footer-tagline">Construire le web de demain, aujourd'hui.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Navigation</h4>
+            <a href="#about">À propos</a>
+            <a href="#stack">Stack</a>
+            <a href="#projects">Projets</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <a href="mailto:exhorte.mboumba@email.com"><i class="fas fa-envelope"></i> Email</a>
+            <a href="https://github.com/" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://linkedin.com/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Exhorte Mboumba. Fait avec <i class="fas fa-heart" style="color:#ef4444"></i> à Dakar.</p>
+        <div class="footer-social">
+          <a href="mailto:exhorte.mboumba@email.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== BACK TO TOP ========== -->
+  <button class="back-to-top" id="backToTop" aria-label="Retour en haut de page" title="Retour en haut">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- Main JavaScript -->
+  <script src="js/main.js"></script>
+</body>
+</html>
