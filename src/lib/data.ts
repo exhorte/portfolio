@@ -29,6 +29,7 @@ import {
   SiRender,
   SiQdrant,
   SiLangchain,
+  SiScikitlearn,
   SiVitest,
 } from "react-icons/si";
 
@@ -36,7 +37,8 @@ export type Icon = ComponentType<{ className?: string; size?: number }>;
 
 export const nav = {
   brand: "EM",
-  cvUrl: "/cv-exhorte-mboumba.pdf",
+  // Empty = no "Download CV" button. Set to the PDF path once an up-to-date CV is published in /public.
+  cvUrl: "",
   links: [
     { label: "About", href: "#about" },
     { label: "Skills", href: "#skills" },
@@ -137,6 +139,7 @@ export const skillCategories: { title: string; items: { name: string; icon: Icon
       { name: "AI Agent Orchestration", icon: Bot },
       { name: "Structured Outputs & Validation", icon: ShieldCheck },
       { name: "LangChain", icon: SiLangchain },
+      { name: "Machine Learning (scikit-learn, XGBoost)", icon: SiScikitlearn },
       { name: "Document Processing", icon: FileText },
     ],
   },

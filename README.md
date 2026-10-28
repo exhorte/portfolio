@@ -26,7 +26,7 @@ src/
     projects.ts            # tous les projets, statuts, projets mis en avant et secondaires
     hooks/                 # useTypewriter, useScrollSpy
 public/
-  cv-exhorte-mboumba.pdf   # CV téléchargeable
+  assets/                  # photo (le CV PDF est retiré tant qu'il n'est pas à jour)
 docs/
   PORTFOLIO_AUDIT.md       # audit, décisions et checklist
 ```
@@ -48,7 +48,7 @@ npm run build    # build de production
   - `secondarySlugs` : la liste « More projects ».
   - Un projet avec `hasDetailPage: true` obtient une page `/projects/<slug>` (problème, solution, contribution, fonctionnalités, architecture, décisions, validation, limites).
 - **Statuts autorisés** : *In Development*, *Working Prototype*, *Available Demo*, *Completed Project*, *Experimental*.
-- **CV** → remplacer `public/cv-exhorte-mboumba.pdf` (le chemin est défini dans `nav.cvUrl`).
+- **CV** → le bouton « Download CV » est masqué tant que `nav.cvUrl` est vide (`src/lib/data.ts`). Pour le réactiver : placer le CV à jour dans `public/` et renseigner `nav.cvUrl` (ex. `"/cv-exhorte-mboumba.pdf"`).
 
 ### Règles de contenu
 

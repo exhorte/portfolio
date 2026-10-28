@@ -55,14 +55,16 @@ export function Navbar() {
         </ul>
 
         <div className="hidden lg:block">
-          <a
-            href={nav.cvUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-2.5 text-xs font-medium text-background transition-opacity hover:opacity-80"
-          >
-            <Download size={14} /> Download CV
-          </a>
+          {nav.cvUrl && (
+            <a
+              href={nav.cvUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-2.5 text-xs font-medium text-background transition-opacity hover:opacity-80"
+            >
+              <Download size={14} /> Download CV
+            </a>
+          )}
         </div>
 
         <Sheet open={open} onOpenChange={setOpen}>
@@ -103,16 +105,18 @@ export function Navbar() {
                 </li>
               ))}
             </ul>
-            <div className="mt-auto p-4">
-              <a
-                href={nav.cvUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background"
-              >
-                <Download size={14} /> Download CV
-              </a>
-            </div>
+            {nav.cvUrl && (
+              <div className="mt-auto p-4">
+                <a
+                  href={nav.cvUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background"
+                >
+                  <Download size={14} /> Download CV
+                </a>
+              </div>
+            )}
           </SheetContent>
         </Sheet>
       </nav>

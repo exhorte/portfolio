@@ -503,13 +503,49 @@ export const projects: Project[] = [
     github: "https://github.com/exhorte/MovieFlix",
     hasDetailPage: false,
   },
+  {
+    slug: "fraudlens",
+    title: "FraudLens",
+    tagline:
+      "Educational project: credit-card fraud detection under extreme class imbalance, with leak-free evaluation, threshold and cost analysis, and probability calibration.",
+    category: "Machine Learning / Data",
+    status: "prototype",
+    tier: 2,
+    stack: ["Python", "scikit-learn", "XGBoost", "imbalanced-learn", "Streamlit", "pytest"],
+    highlights: [
+      "Compares Logistic Regression, Random Forest and XGBoost with no rebalancing, class weights and SMOTE on shared stratified folds; SMOTE sits inside the pipeline so it only touches training rows",
+      "Test set kept sealed until the model, strategy and thresholds are fixed; selection by Average Precision rather than accuracy",
+      "Threshold and hypothetical cost analysis, calibration study and a temporal stress test",
+      "Streamlit app with validated CSV scoring; 152 tests on synthetic data",
+    ],
+    github: "https://github.com/exhorte/FraudLens",
+    hasDetailPage: false,
+  },
+  {
+    slug: "churnlens",
+    title: "ChurnLens",
+    tagline:
+      "Educational project: reproducible customer-churn workflow with a nine-section Streamlit app, a FastAPI scoring service and an assumption-driven retention simulator.",
+    category: "Machine Learning / Data",
+    status: "prototype",
+    tier: 2,
+    stack: ["Python", "scikit-learn", "Streamlit", "FastAPI", "pytest", "Docker"],
+    highlights: [
+      "Five classifiers compared on shared stratified folds; threshold chosen on out-of-fold predictions, never on the held-out test set",
+      "Error analysis and model explanations, described as associations rather than causes",
+      "Retention simulator that treats campaign success rate and costs as user-supplied assumptions, not predictions",
+      "FastAPI endpoints for single and batch scoring that share the saved model with the app",
+    ],
+    github: "https://github.com/exhorte/ChurnLens",
+    hasDetailPage: false,
+  },
 ];
 
 // Featured on the home page, in display order.
 export const featuredSlugs = ["ai-software-architect", "hr-agent-assistant", "tontyn", "vozel"] as const;
 
 // Shown as a compact "More projects" list under the featured projects.
-export const secondarySlugs = ["fryle", "medical-agent", "fluent", "finway"] as const;
+export const secondarySlugs = ["fryle", "medical-agent", "fraudlens", "churnlens", "fluent", "finway"] as const;
 
 function pick(slugs: readonly string[]): Project[] {
   return slugs

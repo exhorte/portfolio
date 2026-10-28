@@ -56,14 +56,16 @@ export function Hero() {
             >
               <Rocket size={16} aria-hidden="true" /> Explore my work
             </a>
-            <a
-              href={nav.cvUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted"
-            >
-              <Download size={16} aria-hidden="true" /> Download CV
-            </a>
+            {nav.cvUrl && (
+              <a
+                href={nav.cvUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+              >
+                <Download size={16} aria-hidden="true" /> Download CV
+              </a>
+            )}
             <a
               href="#contact"
               className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted"
