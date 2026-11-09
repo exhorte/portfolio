@@ -2,15 +2,17 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { Card } from "@/components/ui/card";
-import { about } from "@/lib/data";
+import { getDictionary } from "@/lib/i18n";
+import type { Locale } from "@/lib/i18n/config";
 
-export function About() {
+export function About({ locale }: { locale: Locale }) {
+  const about = getDictionary(locale).about;
   const [lead, ...rest] = about.paragraphs;
 
   return (
-    <section id="about" className="bg-background py-28" aria-label="About">
+    <section id="about" className="bg-background py-28" aria-label={about.title}>
       <Container>
-        <SectionHeader tag="Who I am" title="About" gradient="" />
+        <SectionHeader tag={about.tag} title={about.title} gradient="" />
 
         <div className="grid gap-16 lg:grid-cols-[1.2fr_1fr]">
           <Reveal direction="right">
@@ -24,7 +26,7 @@ export function About() {
             </div>
 
             <div className="mt-10">
-              <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">How I work</h3>
+              <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">{about.principlesTitle}</h3>
               <div className="mt-5 flex flex-wrap gap-2">
                 {about.principles.map((m) => (
                   <span

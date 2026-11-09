@@ -33,18 +33,23 @@ import {
   SiVitest,
 } from "react-icons/si";
 
+// Structure, links and icons only. Every visible sentence lives in the language dictionaries
+// (`src/lib/i18n/dictionaries`); a label below can be overridden there through `labels`.
+
 export type Icon = ComponentType<{ className?: string; size?: number }>;
+
+export type NavId = "about" | "skills" | "projects" | "contact";
 
 export const nav = {
   brand: "EM",
   // Empty = no "Download CV" button. Set to the PDF path once an up-to-date CV is published in /public.
   cvUrl: "",
-  links: [
-    { label: "About", href: "#about" },
-    { label: "Skills", href: "#skills" },
-    { label: "Projects", href: "#projects" },
-    { label: "Contact", href: "#contact" },
-  ],
+  links: [{ id: "about" }, { id: "skills" }, { id: "projects" }, { id: "contact" }] as { id: NavId }[],
+};
+
+export const profile = {
+  firstName: "Exhorte",
+  lastName: "Mboumba",
 };
 
 export const socials = [
@@ -54,64 +59,18 @@ export const socials = [
   { icon: Globe, label: "ExponentValue", href: "https://exponentvalue.com", handle: "exponentvalue.com" },
 ];
 
-export const hero = {
-  badge: "Open to Software & AI Engineering opportunities",
-  greeting: "Hi, I'm",
-  firstName: "Exhorte",
-  lastName: "Mboumba",
-  // Full professional title (exposed to assistive technology); the animated line cycles through `titles`.
-  title: "Software Engineer · AI Engineer",
-  titles: ["Software Engineer · AI Engineer", "Intelligent Systems & Automation"],
-  headline: "Engineering software and intelligent systems that solve real-world problems.",
-  summary:
-    "I design and build full-stack applications, backend systems, AI-powered tools, and automated workflows. My focus is turning complex requirements into practical, reliable, and maintainable software.",
-  location: "Based in Dakar, Senegal",
-  floatCards: [
-    { icon: SiReact, label: "React" },
-    { icon: SiSpringboot, label: "Spring Boot" },
-    { icon: SiNextdotjs, label: "Next.js" },
-    { icon: SiGooglegemini, label: "AI Agents" },
-  ],
-};
+export const heroCards = [
+  { icon: SiReact, label: "React" },
+  { icon: SiSpringboot, label: "Spring Boot" },
+  { icon: SiNextdotjs, label: "Next.js" },
+  { icon: SiGooglegemini, label: "AI Agents" },
+];
 
-export const about = {
-  paragraphs: [
-    "I'm a software engineer focused on building practical software products and intelligent systems.",
-    "My work spans full-stack development, backend engineering, software architecture, and AI-powered applications. I enjoy solving problems that require more than a user interface: designing reliable APIs, structuring data, integrating AI capabilities, automating workflows, and ensuring that individual components work together as a coherent system.",
-    "I approach engineering with an emphasis on clear architecture, maintainability, security, and testing. Whether I'm building a multi-agent platform, a document-grounded AI assistant, or a cross-platform application, my objective is the same: deliver software that addresses a real need and can evolve beyond its initial implementation.",
-  ],
-  interests:
-    "My current interests include AI agent orchestration, retrieval-augmented generation, knowledge-intensive applications, and intelligent business automation.",
-  principles: ["Clear architecture", "Maintainability", "Security", "Testing"],
-  areasTitle: "Areas of work",
-  areas: [
-    {
-      title: "Full-stack & backend",
-      desc: "Spring Boot and Next.js applications with REST APIs, authentication and relational data.",
-      examples: "Tontyn, Fryle",
-    },
-    {
-      title: "Applied AI",
-      desc: "Document-grounded RAG with cited sources, and multi-agent orchestration with schema-validated state.",
-      examples: "HRagentAssistant, AI Software Architect",
-    },
-    {
-      title: "Desktop & local inference",
-      desc: "A Windows dictation app in Rust and Tauri with on-device speech recognition.",
-      examples: "Vozel",
-    },
-  ],
-};
+export type SkillCategoryId = "software" | "ai" | "application" | "data";
 
-export const skills = {
-  tag: "Toolbox",
-  title: "Skills",
-  subtitle: "Technologies I have used in the projects below, grouped by area.",
-};
-
-export const skillCategories: { title: string; items: { name: string; icon: Icon }[] }[] = [
+export const skillCategories: { id: SkillCategoryId; items: { name: string; icon: Icon }[] }[] = [
   {
-    title: "Software Engineering",
+    id: "software",
     items: [
       { name: "Java", icon: SiOpenjdk },
       { name: "Spring Boot", icon: SiSpringboot },
@@ -125,7 +84,7 @@ export const skillCategories: { title: string; items: { name: string; icon: Icon
     ],
   },
   {
-    title: "AI Engineering",
+    id: "ai",
     items: [
       { name: "LLM Integration", icon: SiGooglegemini },
       { name: "Retrieval-Augmented Generation", icon: Layers3 },
@@ -137,7 +96,7 @@ export const skillCategories: { title: string; items: { name: string; icon: Icon
     ],
   },
   {
-    title: "Application Development",
+    id: "application",
     items: [
       { name: "Python / FastAPI", icon: SiFastapi },
       { name: "Django", icon: SiDjango },
@@ -149,7 +108,7 @@ export const skillCategories: { title: string; items: { name: string; icon: Icon
     ],
   },
   {
-    title: "Data & Infrastructure",
+    id: "data",
     items: [
       { name: "PostgreSQL", icon: SiPostgresql },
       { name: "SQLite", icon: SiSqlite },
@@ -178,16 +137,3 @@ export const stackPrimary = [
   { name: "Docker", icon: SiDocker },
   { name: "Git", icon: SiGit },
 ];
-
-export const contact = {
-  tag: "Let's connect",
-  heading: "Have a project, product or technical challenge in mind?",
-  text: "Open to relevant Software Engineering and AI Engineering opportunities, technical collaborations, and selected freelance projects.",
-  cta: "Send me an email",
-};
-
-export const footer = {
-  tagline: "Software and intelligent systems that solve real-world problems.",
-  role: "Software Engineer · AI Engineer · Dakar, Senegal",
-  copyright: "Exhorte Mboumba.",
-};

@@ -1,13 +1,17 @@
 import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { contact, socials } from "@/lib/data";
+import { socials } from "@/lib/data";
+import { getDictionary } from "@/lib/i18n";
+import type { Locale } from "@/lib/i18n/config";
 
-export function Contact() {
+export function Contact({ locale }: { locale: Locale }) {
+  const dict = getDictionary(locale);
+  const contact = dict.contact;
   const email = socials.find((s) => s.label === "Email");
 
   return (
-    <section id="contact" className="bg-ink py-28 text-ink-foreground" aria-label="Contact">
+    <section id="contact" className="bg-ink py-28 text-ink-foreground" aria-label={dict.nav.links.contact}>
       <Container>
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="inline-flex items-center font-mono text-xs uppercase tracking-[0.2em] text-ink-muted">

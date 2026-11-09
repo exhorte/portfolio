@@ -3,12 +3,12 @@ import { stackPrimary } from "@/lib/data";
 const items = stackPrimary.slice(0, 10);
 const loop = [...items, ...items];
 
-export function LogoStrip() {
+export function LogoStrip({ label }: { label: string }) {
   return (
     <div className="border-y border-ink-border bg-ink py-10 text-ink-foreground">
       <div className="mx-auto mb-6 max-w-7xl px-6 lg:px-10">
         <span className="font-mono text-xs uppercase tracking-[0.2em] text-ink-muted">
-          Core stack
+          {label}
         </span>
       </div>
       <div

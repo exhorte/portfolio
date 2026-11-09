@@ -1,4 +1,3 @@
-import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
@@ -6,36 +5,9 @@ import { FaGithub } from "react-icons/fa6";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/badge";
 import { ArchitectureFlow } from "@/components/ui/ArchitectureFlow";
-import { projects, getProjectBySlug, getNextProjects } from "@/lib/projects";
-
-const siteUrl = "https://exhorte.dev";
-
-export function generateStaticParams() {
-  return projects.filter((p) => p.hasDetailPage).map((p) => ({ slug: p.slug }));
-}
-
-export async function generateMetadata(
-  props: PageProps<"/projects/[slug]">,
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
-  const { slug } = await props.params;
-  const project = getProjectBySlug(slug);
-  if (!project) return {};
-
-  const title = `${project.title} — Exhorte Mboumba`;
-  const description = project.tagline;
-  const path = `/projects/${project.slug}`;
-  // Metadata is merged shallowly: set the canonical per page and carry over the shared image.
-  const images = (await parent).openGraph?.images ?? [];
-
-  return {
-    title,
-    description,
-    alternates: { canonical: path },
-    openGraph: { title, description, type: "article", url: `${siteUrl}${path}`, siteName: "Exhorte Mboumba", images },
-    twitter: { card: "summary", title, description },
-  };
-}
+import { getDictionary } from "@/lib/i18n";
+import { localePath, type Locale } from "@/lib/i18n/config";
+import { getNextProjects, getProject } from "@/lib/projects";
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -59,25 +31,28 @@ function BulletList({ items }: { items: string[] }) {
   );
 }
 
-export default async function ProjectDetailPage(props: PageProps<"/projects/[slug]">) {
-  const { slug } = await props.params;
-  const project = getProjectBySlug(slug);
+export function ProjectPage({ locale, slug }: { locale: Locale; slug: string }) {
+  const project = getProject(locale, slug);
   if (!project || !project.hasDetailPage) notFound();
+
+  const dict = getDictionary(locale);
+  const { sections } = dict.projectPage;
+  const projectsHref = `${localePath(locale, "/")}#projects`;
 
   const linkPrimary =
     "inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background hover:opacity-80";
   const linkSecondary =
     "inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium text-foreground hover:border-foreground";
-  const more = getNextProjects(project.slug, 2);
+  const more = getNextProjects(locale, project.slug, 2);
 
   return (
     <article className="bg-background py-32">
       <Container className="max-w-4xl">
         <Link
-          href="/#projects"
+          href={projectsHref}
           className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground"
         >
-          <ArrowLeft size={14} aria-hidden="true" /> Back to projects
+          <ArrowLeft size={14} aria-hidden="true" /> {dict.projectPage.back}
         </Link>
 
         <div className="mt-8">
@@ -89,7 +64,7 @@ export default async function ProjectDetailPage(props: PageProps<"/projects/[slu
         <h1 className="mt-4 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">{project.title}</h1>
         <p className="mt-4 max-w-2xl text-lg text-muted-foreground">{project.tagline}</p>
 
-        <ul className="mt-6 flex flex-wrap gap-2" aria-label="Technology stack">
+        <ul className="mt-6 flex flex-wrap gap-2" aria-label={dict.projectPage.stackLabel}>
           {project.stack.map((tag) => (
             <li key={tag}>
               <Badge variant="secondary" className="font-mono text-[11px]">
@@ -103,48 +78,48 @@ export default async function ProjectDetailPage(props: PageProps<"/projects/[slu
           <div className="mt-8 flex flex-wrap gap-3">
             {project.github && (
               <a href={project.github} target="_blank" rel="noopener noreferrer" className={linkPrimary}>
-                <FaGithub size={15} aria-hidden="true" /> Source code
+                <FaGithub size={15} aria-hidden="true" /> {dict.projects.sourceCode}
               </a>
             )}
             {project.demo && (
               <a href={project.demo} target="_blank" rel="noopener noreferrer" className={linkSecondary}>
-                <ArrowUpRight size={15} aria-hidden="true" /> Live demo
+                <ArrowUpRight size={15} aria-hidden="true" /> {dict.projects.liveDemo}
               </a>
             )}
             {project.website && (
               <a href={project.website} target="_blank" rel="noopener noreferrer" className={linkSecondary}>
-                <ArrowUpRight size={15} aria-hidden="true" /> Website
+                <ArrowUpRight size={15} aria-hidden="true" /> {dict.projects.website}
               </a>
             )}
           </div>
         )}
 
         {project.problem && (
-          <Section title="Problem">
+          <Section title={sections.problem}>
             <p className="text-lg leading-relaxed text-foreground">{project.problem}</p>
           </Section>
         )}
 
         {project.solution && (
-          <Section title="Solution">
+          <Section title={sections.solution}>
             <p className="text-lg leading-relaxed text-foreground">{project.solution}</p>
           </Section>
         )}
 
         {project.contribution && (
-          <Section title="My contribution">
+          <Section title={sections.contribution}>
             <p className="text-lg leading-relaxed text-foreground">{project.contribution}</p>
           </Section>
         )}
 
         {project.highlights && (
-          <Section title="Key features">
+          <Section title={sections.highlights}>
             <BulletList items={project.highlights} />
           </Section>
         )}
 
         {project.architecture && (
-          <Section title="Architecture">
+          <Section title={sections.architecture}>
             <div className="mt-2">
               <ArchitectureFlow steps={project.architecture} />
             </div>
@@ -152,30 +127,30 @@ export default async function ProjectDetailPage(props: PageProps<"/projects/[slu
         )}
 
         {project.decisions && (
-          <Section title="Engineering decisions">
+          <Section title={sections.decisions}>
             <BulletList items={project.decisions} />
           </Section>
         )}
 
         {project.validation && (
-          <Section title="Validation and tests">
+          <Section title={sections.validation}>
             <BulletList items={project.validation} />
           </Section>
         )}
 
         {project.limitations && (
-          <Section title="Limitations">
+          <Section title={sections.limitations}>
             <BulletList items={project.limitations} />
           </Section>
         )}
 
         {more.length > 0 && (
-          <Section title="More projects">
+          <Section title={sections.more}>
             <ul className="grid gap-4 sm:grid-cols-2">
               {more.map((other) => (
                 <li key={other.slug}>
                   <Link
-                    href={`/projects/${other.slug}`}
+                    href={localePath(locale, `/projects/${other.slug}`)}
                     className="flex h-full flex-col gap-2 rounded-xl border border-border p-5 transition-colors hover:border-foreground"
                   >
                     <span className="flex items-center justify-between gap-3">
