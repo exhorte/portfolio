@@ -424,10 +424,12 @@ Add the code to `locales` and `localeInfo` in [`src/lib/i18n/config.ts`](./src/l
 
 ## 10. Deployment & Operations
 
-- **Target Environment**: Hosted on **Hostinger** as a Node.js (`20.x`) Next.js application behind `https://exhorte.dev`.
-- **Release Procedure**: The production instance is deployed via archive upload rather than an automatic Git webhook. After merging changes to `main`:
+- **Target Environment**: Hosted on **Hostinger** as a Node.js (`22.x`) Next.js application behind `https://exhorte.dev`, built from this repository (`exhorte/portfolio`, branch `main`) with `npm run build` and the `.next` output directory.
+- **Release Procedure**: Deployment is automatic. Every push to `main` makes Hostinger clone the repository, run `npm install` and `npm run build`, then publish the result (about 3 minutes). To release:
   1. Run `npm run lint` and `npm run build` locally to verify zero warnings and clean static generation.
-  2. Package the repository (excluding `node_modules/`, `.next/`, and `.git/`) and upload the release archive to the Hostinger Node.js application panel.
+  2. Push to `main`, then follow the build under hPanel → Websites → exhorte.dev → Deployments (logs are in the deployment details).
+  3. If a build fails, the site keeps serving the last successful deployment; fix the cause and push again.
+- **Operations notes**: the Hostinger CDN caches pages for a long time (`s-maxage=31536000`); after a release, check the live site and use "Vider le cache" in the site dashboard if an old page is still served.
 
 ---
 
